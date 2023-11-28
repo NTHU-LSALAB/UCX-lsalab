@@ -1877,6 +1877,11 @@ void ucs_config_parser_print_opts(FILE *stream, const char *title, const void *o
                                             prefix, &prefix_list);
     }
 
+    // TODO: PP-LAB6
+    if (flags /*& UCS_CONFIG_PRINT_TLS*/) {
+
+    }
+
     if (flags & UCS_CONFIG_PRINT_HEADER) {
         fprintf(stream, "\n");
     }

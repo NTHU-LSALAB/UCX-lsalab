@@ -1,0 +1,5 @@
+.idea/
+autom4te.cache/
+build/
+compile
+config.h.in~
