@@ -1877,7 +1877,7 @@ void ucs_config_parser_print_opts(FILE *stream, const char *title, const void *o
                                             prefix, &prefix_list);
     }
 
-    // TODO: PP-LAB6
+    // TODO: PP-HW4
     if (flags /*& UCS_CONFIG_PRINT_TLS*/) {
 
     }
