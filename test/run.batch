@@ -1,11 +1,18 @@
 #!/bin/bash
 #SBATCH --job-name=$USER-ucx
 #SBATCH --output=result_%J.out
-#SBATCH --nodes=1
+#SBATCH --nodes=2
 #SBATCH --ntasks=2
-#SBATCH --time=00:5:00
+#SBATCH --time=00:01:00
 #SBATCH --mem=1000
 #SBATCH --partition=test
 
 module load openmpi/4.1.5
-/home/pp23/share/hw4/mpiucx -x UCX_LOG_LEVEL=info ./mpi/send_recv.out 
+
+ucx_lib_directory="$HOME/hw4/lib"
+
+ld_preload_paths=$(find "$ucx_lib_directory" -name 'libucp.so.0' -o -name 'libuct.so.0' -o -name 'libucm.so.0' -o -name 'libucs.so.0' | tr '\n' ':' | sed 's/:$//')
+
+echo $ld_preload_paths
+
+srun --export LD_PRELOAD=${ld_preload_paths}:${LD_PRELOAD} /home/ta/willian/osu/osu-micro-benchmarks-7.3/c/mpi/pt2pt/standard/osu_latency #./mpi/send_recv.out 
