@@ -15,4 +15,5 @@ ld_preload_paths=$(find "$ucx_lib_directory" -name 'libucp.so.0' -o -name 'libuc
 
 echo $ld_preload_paths
 
-srun --export LD_PRELOAD=${ld_preload_paths}:${LD_PRELOAD} /home/ta/willian/osu/osu-micro-benchmarks-7.3/c/mpi/pt2pt/standard/osu_latency #./mpi/send_recv.out 
+#srun --export LD_PRELOAD=${ld_preload_paths}:${LD_PRELOAD} /home/ta/willian/osu/osu-micro-benchmarks-7.3/c/mpi/pt2pt/standard/osu_latency
+srun --export LD_PRELOAD=${ld_preload_paths}:${LD_PRELOAD} $HOME/UCX-lsalab/test/mpi/osu/pt2pt/standard/osu_latency
